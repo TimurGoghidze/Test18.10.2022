@@ -73,8 +73,8 @@ public class FistSeleniumTest {                              // класс
     @Test
     public void wrongCredentialTest() {
         WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
-        emailField.click();
-        emailField.clear();
+        emailField.click();//click
+        emailField.clear();//clear
         emailField.sendKeys("failmail@mail.ru");
 
         WebElement passField = driver.findElement(By.xpath("//input[@placeholder=\"Password\"]"));
@@ -93,7 +93,8 @@ public class FistSeleniumTest {                              // класс
     }
 
 
-
+    //@Test
+    //public void wrongCredentialTest() {}
 
     // After test - чистим за собой ресурсы
     @AfterMethod
