@@ -1,7 +1,9 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import static java.lang.Thread.sleep;
@@ -9,9 +11,9 @@ import static java.lang.Thread.sleep;
 // в файле pom.xml в <dependencies> на сайте https://mvnrepository.com/search?q=testng <dependencies></dependencies>
 // установил TestNG последний и Selenium Java и вкладка Maven
 
-public class SignInPageTest extends TestBase{                              // класс
+public class SignInPageTest extends TestBase{
 
-    @BeforeMethod
+    @BeforeClass // если будет пробелма сменить на @BeforeMethod
     public void setUpInternal(){
         super.url="https://cloudrein.com/newapp#/sign-in";
     }
@@ -83,6 +85,18 @@ public class SignInPageTest extends TestBase{                              // к
         //WebElement invalidEmailOrPass = driver.findElement(By.xpath("//div[text()='Invalid Email or password.']"));
         //Assert.assertEquals(invalidEmailOrPass.getText(),"Invalid Email or password.");
         // Assert.assertFalse(signInButton.isEnabled()); надо разобраться
+    }
+
+
+    @Test
+    public void correctCredentialTest() throws InterruptedException {
+        signIn();
+
+        Thread.sleep(5000);
+
+        WebElement headEmail = driver.findElement(By.xpath("//span[@class='StyledHeader__StyledUserEmail-sc-17b3aa3-7 esuuvU']"));
+        Assert.assertEquals(headEmail.getText(),"testqa36a@gmail.com");
+        
     }
 
 }
