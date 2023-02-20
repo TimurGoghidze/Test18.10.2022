@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
@@ -11,14 +12,6 @@ import java.util.concurrent.TimeUnit;
 public class TestBase {
     WebDriver driver;
     String url;
-
-    public static void sleep(int millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @BeforeTest
     public void setUp() {
@@ -30,11 +23,12 @@ public class TestBase {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
-    @AfterMethod(enabled = true)
+    @AfterSuite(enabled = true)
     public void cleanUp() {
         driver.quit();
     }
 
+//helper method
     public void signIn() { //refactoring correct behavior
         WebElement emailField1 = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
         emailField1.click();
@@ -48,5 +42,12 @@ public class TestBase {
 
         WebElement signInButton = driver.findElement(By.xpath("//button[@type='submit']"));
         signInButton.click();
+    }
+    public static void sleep(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
