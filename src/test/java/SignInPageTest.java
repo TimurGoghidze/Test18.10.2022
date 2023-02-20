@@ -61,12 +61,12 @@ public class SignInPageTest extends TestBase{
         WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
         emailField.click();//click
         emailField.clear();//clear
-        emailField.sendKeys("testQA36a@gmail.com");
+        emailField.sendKeys(MyCredentials.email1);
 
         WebElement passField = driver.findElement(By.xpath("//input[@placeholder=\"Password\"]"));
         passField.click();
         passField.clear();
-        passField.sendKeys("Qwer123"); //пишем ошибочный пароль
+        passField.sendKeys(MyCredentials.pass1); //пишем ошибочный пароль
 
 //        Actions a=new Actions(driver);
 //        a.moveToElement(passField).doubleClick().click().sendKeys(Keys.BACK_SPACE).perform();
@@ -93,7 +93,7 @@ public class SignInPageTest extends TestBase{
         sleep(5000);
 
         WebElement headEmail = driver.findElement(By.xpath("//span[@class='StyledHeader__StyledUserEmail-sc-17b3aa3-7 esuuvU']"));
-        Assert.assertEquals(headEmail.getText(),"testqa36a@gmail.com");
+        Assert.assertEquals(headEmail.getText(), MyCredentials.email1);
         
     }
 

@@ -16,7 +16,7 @@ public class PasswordResetTest extends TestBase {
         WebElement emailField1 = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]")); //enter mail
         emailField1.click();//click
         emailField1.clear();//clear
-        emailField1.sendKeys("testQA36a@gmail.com");
+        emailField1.sendKeys(MyCredentials.email1);
         Thread.sleep(100); // a little break
 
         WebElement resetButton = driver.findElement(By.xpath("//button[@type=\"submit\"]")); // find button
