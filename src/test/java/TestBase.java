@@ -11,7 +11,7 @@ public class TestBase {
 
     @BeforeMethod
     public void setUp() {
-        System.out.println("000000");
+
         String path = System.getenv("cdr");
         System.setProperty("webdriver.chrome.driver", path);
         driver = new ChromeDriver();

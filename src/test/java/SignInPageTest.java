@@ -1,22 +1,15 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
 
 // в файле pom.xml в <dependencies> на сайте https://mvnrepository.com/search?q=testng <dependencies></dependencies>
 // установил TestNG последний и Selenium Java и вкладка Maven
 
-public class FistSeleniumTest extends TestBase{                              // класс
+public class SignInPageTest extends TestBase{                              // класс
 
     @BeforeMethod
     public void setUpInternal(){
