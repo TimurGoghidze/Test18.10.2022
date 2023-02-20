@@ -18,7 +18,10 @@ import static java.lang.Thread.sleep;
 
 public class FistSeleniumTest extends TestBase{                              // класс
 
-
+    @BeforeMethod
+    public void setUpInternal(){
+        super.url="https://cloudrein.com/newapp#/sign-in";
+    }
 
     //Test
     @Test

@@ -7,13 +7,15 @@ import java.util.concurrent.TimeUnit;
 
 public class TestBase {
     WebDriver driver;
+    String url;
 
     @BeforeMethod
     public void setUp() {
+        System.out.println("000000");
         String path = System.getenv("cdr");
         System.setProperty("webdriver.chrome.driver", path);
         driver = new ChromeDriver();
-        driver.get("https://cloudrein.com/newapp#/sign-in");
+        driver.get(url);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
