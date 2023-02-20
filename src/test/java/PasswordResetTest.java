@@ -13,20 +13,20 @@ public class PasswordResetTest extends TestBase {
     @Test
     public void loginEmailForNewPass() throws InterruptedException {
 
-        WebElement emailField1 = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
+        WebElement emailField1 = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]")); //enter mail
         emailField1.click();//click
         emailField1.clear();//clear
         emailField1.sendKeys("testQA36a@gmail.com");
+        Thread.sleep(100); // a little break
+
+        WebElement resetButton = driver.findElement(By.xpath("//button[@type=\"submit\"]")); // find button
+        resetButton.click(); // click button
         Thread.sleep(100);
 
-        WebElement resetButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
-        resetButton.click();
-        Thread.sleep(100);
-
-
-        WebElement invalidEmailOrPass1 = driver.findElement(By.xpath("//strong[contains(text(),'An email has been sent to you.')]"));
-        Assert.assertEquals(invalidEmailOrPass1 .getText(), "An email has been sent to you.");
-        Thread.sleep(100);
+        //WebElement invalidEmailOrPass1 = driver.findElement(By.xpath("//strong[contains(text(),'An email has been sent to you.')]")); // find xpath
+        WebElement invalidEmailOrPass1 = driver.findElement(By.tagName("strong")); // search text by tag
+        Assert.assertEquals(invalidEmailOrPass1 .getText(), "An email has been sent to you."); // accept
+        Thread.sleep(3000);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class PasswordResetTest extends TestBase {
 
         WebElement invalidButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
         invalidButton.click();
-        Thread.sleep(100);
+        Thread.sleep(1000);
 
         Assert.assertFalse(invalidButton.isEnabled());
         Thread.sleep(1000);
