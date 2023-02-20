@@ -16,20 +16,9 @@ import static java.lang.Thread.sleep;
 // в файле pom.xml в <dependencies> на сайте https://mvnrepository.com/search?q=testng <dependencies></dependencies>
 // установил TestNG последний и Selenium Java и вкладка Maven
 
-public class FistSeleniumTest {                              // класс
+public class FistSeleniumTest extends TestBase{                              // класс
 
-    WebDriver driver;
 
-    //Before test - здесь подготовительная работа
-    @BeforeMethod                                            //аннотация
-    public void setUp() {
-        String path= System.getenv("cdr");
-        System.setProperty("webdriver.chrome.driver", path);  // идет по этому пути чтобы связать дравером path in Enviroment variable прописан
-        driver = new ChromeDriver();                         // скачанный хром драйвер, использование
-        driver.get("https://cloudrein.com/newapp#/sign-in"); // сайт который будем использовать
-        driver.manage().window().maximize();                 // maximize window
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); // режим ожидания
-    }
 
     //Test
     @Test
@@ -38,7 +27,6 @@ public class FistSeleniumTest {                              // класс
         //WebElement emailInputField = driver.findElement(By.id("email")); //ищем по cssSelector
         //WebElement passInputField = driver.findElement(By.cssSelector("[id=password]"));
         WebElement buttonPushEnter = driver.findElement(By.cssSelector("[type=submit]"));
-
         Assert.assertEquals(buttonPushEnter.getText(), "Sign In");
     }
 
@@ -101,16 +89,4 @@ public class FistSeleniumTest {                              // класс
         // Assert.assertFalse(signInButton.isEnabled()); надо разобраться
     }
 
-
-    //@Test
-    //public void wrongCredentialTest() {}
-
-    // After test - чистим за собой ресурсы
-    @AfterMethod
-//    @AfterMethod(enabled = false) - если хотим отключить страницу
-    public void cleanUp() {
-        driver.quit();                                      //Syntax's for close chrome
-        // driver.close(); // close tab
-
-    }
 }
