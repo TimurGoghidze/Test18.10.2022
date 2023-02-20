@@ -2,8 +2,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import static java.lang.Thread.sleep;
@@ -59,7 +57,7 @@ public class SignInPageTest extends TestBase{
     }
 
     @Test
-    public void wrongCredentialTest() throws InterruptedException {
+    public void tenErrorTest()  {
         WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
         emailField.click();//click
         emailField.clear();//clear
@@ -76,7 +74,7 @@ public class SignInPageTest extends TestBase{
         WebElement signInButton = driver.findElement(By.xpath("//button[@type='submit']"));
         for (int i=0; i<0;i++) { // если хотим более кликать
             signInButton.click();
-            Thread.sleep(100);
+            sleep(100);
         }
 
         WebElement invalidEmailOrPass = driver.findElement(By.xpath("//div[@class='StyledSignIn__Error-sc-t0jmvd-4 fTcqJJ']"));
@@ -89,10 +87,10 @@ public class SignInPageTest extends TestBase{
 
 
     @Test
-    public void correctCredentialTest() throws InterruptedException {
+    public void correctCredentialTest()  {
         signIn();
 
-        Thread.sleep(5000);
+        sleep(5000);
 
         WebElement headEmail = driver.findElement(By.xpath("//span[@class='StyledHeader__StyledUserEmail-sc-17b3aa3-7 esuuvU']"));
         Assert.assertEquals(headEmail.getText(),"testqa36a@gmail.com");
