@@ -1,8 +1,12 @@
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
 
 import static java.lang.Thread.sleep;
 
@@ -10,6 +14,8 @@ import static java.lang.Thread.sleep;
 // установил TestNG последний и Selenium Java и вкладка Maven
 
 public class SignInPageTest extends TestBase{
+
+    Logger logger = LoggerFactory.getLogger(SignInPageTest.class);//иниц переменную Logger и указываем параметром класс
 
     @BeforeClass // если будет пробелма сменить на @BeforeMethod
     public void setUpInternal(){
@@ -19,24 +25,26 @@ public class SignInPageTest extends TestBase{
     //Test
     @Test
     public void myFirstTest() throws Exception {                               // следующий метод
-        //WebElement tag = driver.findElement(By.tagName("h1")); //ищем по тегу
+
         //WebElement emailInputField = driver.findElement(By.id("email")); //ищем по cssSelector
         //WebElement passInputField = driver.findElement(By.cssSelector("[id=password]"));
         WebElement buttonPushEnter = driver.findElement(By.cssSelector("[type=submit]"));
         Assert.assertEquals(buttonPushEnter.getText(), "Sign In");
     }
+    
+
 
     @Test
-    public void mySecondTest() {
+    public void headerTest() throws Exception{
+        logger.info("headerTest");// и через инициализацию вызываем различные методы логирования
+
         WebElement tag = driver.findElement(By.tagName("h1")); //ищем по тегу
         Assert.assertTrue(tag.getText().contains("Sign In to your Account")); //contains это содержимое
     }
 
     @Test
     public void findClass() {
-//        WebElement cl = driver.findElement(By.className("asdasd"));
-//        WebElement id = driver.findElement(By.id("rec434702325"));
-//        WebElement id2 = driver.findElement(By.cssSelector("#rec434702325"));
+
         WebElement linkText = driver.findElement(By.linkText("Terms of Service"));
         WebElement partial = driver.findElement(By.partialLinkText("rms of Ser"));
 
@@ -48,7 +56,6 @@ public class SignInPageTest extends TestBase{
         WebElement cloud = driver.findElement(By.xpath("//img[@class='StyledHeader__LogoIcon-sc-1y31m8t-3 jfcCnf']"));
         Assert.assertTrue(cloud.getAttribute("src").equals("https://cloudrein.com/images/app/LOGO_280X51.svg"));
     }
-
 
     @Test // button
     public void buttonSignIn() {

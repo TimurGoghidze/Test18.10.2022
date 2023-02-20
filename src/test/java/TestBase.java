@@ -13,6 +13,14 @@ public class TestBase {
     WebDriver driver;
     String url;
 
+    protected static WebElement findByXpath(SignInPageTest signInPageTest, String xpathExpression) {
+        return signInPageTest.driver.findElement(By.xpath(xpathExpression));
+    }
+
+    protected static WebElement findByXPath(SignInPageTest signInPageTest, String xpathExpression) {
+        return signInPageTest.driver.findElement(By.xpath(xpathExpression));
+    }
+
     @BeforeTest
     public void setUp() {
         String path = System.getenv("cdr");
