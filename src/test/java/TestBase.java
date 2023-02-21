@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class TestBase {
     WebDriver driver;
     String url;
-    Logger logger = LoggerFactory.getLogger(TestBase.class);//иниц переменную Logger и указываем параметром класс
+    Logger logger = LoggerFactory.getLogger(TestBase.class);//инициализирум переменную Logger и указываем параметром класс
 
     protected static WebElement findByXpath(SignInPageTest signInPageTest, String xpathExpression) {
         return signInPageTest.driver.findElement(By.xpath(xpathExpression));
