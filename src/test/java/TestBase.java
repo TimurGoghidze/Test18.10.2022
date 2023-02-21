@@ -2,6 +2,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -12,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class TestBase {
     WebDriver driver;
     String url;
+    Logger logger = LoggerFactory.getLogger(TestBase.class);//иниц переменную Logger и указываем параметром класс
 
     protected static WebElement findByXpath(SignInPageTest signInPageTest, String xpathExpression) {
         return signInPageTest.driver.findElement(By.xpath(xpathExpression));

@@ -1,10 +1,8 @@
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 
@@ -15,9 +13,7 @@ import static java.lang.Thread.sleep;
 
 public class SignInPageTest extends TestBase{
 
-    Logger logger = LoggerFactory.getLogger(SignInPageTest.class);//иниц переменную Logger и указываем параметром класс
-
-    @BeforeClass // если будет пробелма сменить на @BeforeMethod
+    @BeforeSuite // если будет проблема сменить на @BeforeMethod
     public void setUpInternal(){
         super.url="https://cloudrein.com/newapp#/sign-in";
     }
@@ -38,12 +34,15 @@ public class SignInPageTest extends TestBase{
     public void headerTest() throws Exception{
         logger.info("headerTest");// и через инициализацию вызываем различные методы логирования
 
+
+
         WebElement tag = driver.findElement(By.tagName("h1")); //ищем по тегу
         Assert.assertTrue(tag.getText().contains("Sign In to your Account")); //contains это содержимое
     }
 
     @Test
     public void findClass() {
+        logger.info("starting to test find class");
 
         WebElement linkText = driver.findElement(By.linkText("Terms of Service"));
         WebElement partial = driver.findElement(By.partialLinkText("rms of Ser"));
