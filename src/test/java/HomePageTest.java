@@ -24,6 +24,9 @@ public class HomePageTest extends TestBase {
         }
     }
 
+    private void signIn() {
+    }
+
 
     @Test
     public void homePageExistenceTest() {
