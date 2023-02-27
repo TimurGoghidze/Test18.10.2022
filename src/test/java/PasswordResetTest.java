@@ -41,7 +41,8 @@ public class PasswordResetTest extends TestBase {
         invalidButton.click();
         Thread.sleep(1000);
 
-        Assert.assertFalse(invalidButton.isEnabled());
+        //Assert.assertFalse(invalidButton.isEnabled());
+        Assert.assertEquals(invalidButton.getAttribute("disabled"), "true");
         Thread.sleep(1000);
 
     }
