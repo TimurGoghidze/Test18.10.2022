@@ -25,7 +25,14 @@
             <artifactId>testng</artifactId>
             <version>7.7.1</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -73,7 +80,6 @@
         </dependency>
 
     </dependencies>
-
 
 
 </project>
